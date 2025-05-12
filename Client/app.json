@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Droov",
-    "slug": "Droov",
+    "name": "Client",
+    "slug": "Client",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "droov",
+    "scheme": "client",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
