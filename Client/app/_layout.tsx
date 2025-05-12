@@ -9,7 +9,10 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import "../global.css";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { createTamagui, TamaguiProvider } from "tamagui";
+import { config } from "@tamagui/config";
 
+const Config = createTamagui(config);
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -22,13 +25,15 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <TamaguiProvider config={Config}>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </TamaguiProvider>
   );
 }
